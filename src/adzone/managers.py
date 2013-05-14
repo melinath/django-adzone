@@ -9,7 +9,7 @@ class AdManager(models.Manager):
         
         """
         try:
-            ad = self.get_query_set().filter(category__slug=ad_category, zone__slug=ad_zone).order_by('?')[0]
+            ad = self.get_query_set().filter(enabled=True, category__slug=ad_category, zone__slug=ad_zone).order_by('?')[0]
         except IndexError:
             return None;
         return ad
